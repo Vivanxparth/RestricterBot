@@ -1,3 +1,4 @@
+import os
 from os import getenv
 import logging
 from pyrogram import Client

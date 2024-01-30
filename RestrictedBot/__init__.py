@@ -1,4 +1,4 @@
-import os
+from os import getenv
 import logging
 from pyrogram import Client
 
@@ -11,6 +11,9 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 LOGGER = logging.getLogger(__name__)
 
+API_ID = int(os.getenv("API_ID", ""))
+API_HASH = os.getenv("API_HASH", "")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 
 class app(Client):
     def __init__(self):

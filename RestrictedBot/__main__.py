@@ -28,10 +28,9 @@ app = Client(
 async def app_boot():
     try:
         await app.start()
-        for all_module in ALL_MODULES:
-        importlib.import_module("RestrictedBot.plugins" + all_module)
-    LOGGER("RestrictedBot.plugins").info("Successfully Imported Modules...")
-    
+    for all_module in ALL_MODULES:
+        importlib.import_module("StringGen.modules." + all_module)
+
     LOGGER("RestrictedBot").info(
         "Bot Started Successfully"
     )

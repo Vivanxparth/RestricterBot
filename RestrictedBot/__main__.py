@@ -3,6 +3,7 @@ import re
 import asyncio
 import os
 import importlib
+from RestrictedBot import app, LOGGER
 from RestrictedBot.plugins import ALL_MODULES
 
 # Pyrogram client
@@ -13,8 +14,10 @@ app = Client(
              bot_token=BOT_TOKEN,
 )
 
-    await app.start()
-    for all_module in ALL_MODULES:
+async def app_boot():
+    try:
+        await app.start()
+        for all_module in ALL_MODULES:
         importlib.import_module("RestrictedBot.plugins" + all_module)
     LOGGER("RestrictedBot.plugins").info("Successfully Imported Modules...")
     
@@ -23,7 +26,7 @@ app = Client(
     )
     await idle()
     await app.stop()
-    LOGGER("RestrictedBot").info("Stopping ABot...")
+    LOGGER("RestrictedBot").info("Stopping Bot...")
 
 
 if __name__ == "__main__":

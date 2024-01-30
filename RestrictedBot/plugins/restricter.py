@@ -21,7 +21,7 @@ async def delete_long_messages(client, message):
 
 
 # Delete edited messages
-@app.on_edited_message(filters.group & ~filters.me)
+@app.on_edited_message(filters.group)
 async def delete_edited_messages(client, message):
     await client.delete_messages(message.chat.id, message.id)
 

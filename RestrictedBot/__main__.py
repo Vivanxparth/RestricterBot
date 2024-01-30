@@ -8,7 +8,7 @@ from RestrictedBot.plugins import ALL_MODULES
 
 # Pyrogram client
 app = Client(
-             "my_bot", 
+             name="RestrictedBot", 
              api_id=API_ID, 
              api_hash=API_HASH, 
              bot_token=BOT_TOKEN,

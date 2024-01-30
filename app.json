@@ -1,0 +1,27 @@
+{
+  "name": "RestricterBot",
+  "description": "Telegram's Most Powerful Bot.",
+  "keywords": ["python3", "telegram"],
+  "env": {
+        "BOT_TOKEN": {
+            "description": "A bot token from @BotFather",
+            "required": true
+        },
+        "API_ID": {
+            "description": "App ID from my.telegram.org/apps",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "App Hash from my.telegram.org/apps",
+            "required": true
+        }
+    }
+    "buildpacks": [
+          {
+              "url": "heroku/python"
+          },         
+          {
+              "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+          }
+      ]
+}

@@ -1,10 +1,21 @@
 from pyrogram import Client, filters, idle
 import re
 import asyncio
+from os import getenv
 import os
+from pyrogram import __version__ as pyr
 import importlib
-from RestrictedBot import app, LOGGER
+from RestrictedBot import app
 from RestrictedBot.plugins import ALL_MODULES
+
+#Logging...
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+
+API_ID = int(os.getenv("API_ID", ""))
+API_HASH = os.getenv("API_HASH", "")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 
 # Pyrogram client
 app = Client(

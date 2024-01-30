@@ -1,1 +1,1 @@
-python3 -m RestrictedBot
+worker: python3 -m RestrictedBot

@@ -18,10 +18,13 @@ app = Client(
         importlib.import_module("RestrictedBot.plugins" + all_module)
     LOGGER("RestrictedBot.plugins").info("Successfully Imported Modules...")
     
-
-
+    LOGGER("RestrictedBot").info(
+        "Bot Started Successfully"
+    )
     await idle()
     await app.stop()
+    LOGGER("RestrictedBot").info("Stopping ABot...")
+
 
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(init())

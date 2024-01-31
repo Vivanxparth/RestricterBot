@@ -15,7 +15,7 @@ async def app_boot():
     for all_module in ALL_MODULES:
         importlib.import_module("RestrictedBot.plugins." + all_module)
 
-    LOGGER.info(f"@{app.username} Started.")
+    LOGGER.info(f"@{app.username} Started Successfully.")
     await idle()
 
 

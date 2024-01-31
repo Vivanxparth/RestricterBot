@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 import os
 from youtube_dl import YoutubeDL
 from RestrictedBot import app
+import yt_dlp
 
 
 ydl_opts = {

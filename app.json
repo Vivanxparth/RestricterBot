@@ -18,6 +18,10 @@
         "LOG_GROUP_ID": {
             "description": "Your log group id not channel id",
             "required": true
+        },
+        "OWNER_ID": {
+            "description": "Your User Id",
+            "required": true
         }
     },
     "buildpacks": [

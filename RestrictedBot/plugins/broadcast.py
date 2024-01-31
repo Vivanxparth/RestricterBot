@@ -1,12 +1,12 @@
 import asyncio
 from pyrogram import Client, filters
-from RestrictedBot import app
+from RestrictedBot import app, OWNER_ID
 
 # Define the broadcast command
 @app.on_message(filters.command("broadcast") & filters.group)
 async def broadcast(client, message):
     # Check if the user is the bot owner
-    if message.from_user.id == your_user_id:
+    if message.from_user.id == OWNER_ID:
         # Split the command into message and media
         try:
             command, *text = message.text.split(maxsplit=1)

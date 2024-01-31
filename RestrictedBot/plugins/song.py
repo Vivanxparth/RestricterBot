@@ -1,23 +1,25 @@
 from pyrogram import Client, filters
-from pytgcalls import PyTgCalls
+import numpy as np
+import cv2
 from RestrictedBot import app
 
-pytgcalls = PyTgCalls(app)
+# Assuming you have a function that generates an image using a GAN model
+def generate_image():
+    # Your image generation code here
+    # This function should return a generated image as a numpy array
+    return np.random.randint(0, 256, size=(256, 256, 3), dtype=np.uint8)
 
-# Handle the play command
-@app.on_message(filters.command("play") & filters.private)
-async def play(client, message):
-    chat_id = message.chat.id
-    user_id = message.from_user.id
-    # Check if the user is in a voice chat
-    if "voice" in message.chat.type:
-        # Stream a file to the group voice chat
-        path_to_audio_file = "path_to_audio_file.mp3"  # Replace with the actual path to your audio file
-        await pytgcalls.join_group_call(
-            chat_id,
-            path_to_audio_file,
-            enable_logs=True
-        )
-    else:
-        await message.reply_text("You must join a voice chat to play music.")
+
+# Define a handler for the /generate command
+@app.on_message(filters.command("generate"))
+def generate_command(client, message):
+    # Generate an image
+    generated_image = generate_image()
+
+    # Save the image to a file
+    file_path = "generated_image.png"
+    cv2.imwrite(file_path, generated_image)
+
+    # Send the image as a reply
+    message.reply_photo(file_path)
 

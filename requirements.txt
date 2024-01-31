@@ -1,5 +1,2 @@
 pyrogram
 tgcrypto
-asyncio
-pyaes
-pysocks

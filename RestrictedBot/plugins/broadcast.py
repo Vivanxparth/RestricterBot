@@ -1,15 +1,10 @@
 from pyrogram import Client, filters
 from RestrictedBot import app as bot
 
-
-@bot.on_message(filters.command(['start']))
-def send_welcome(message):
-    bot.reply_text(message, "Welcome to the Broadcast Bot!")
-
 @bot.on_message(filters.command(['broadcast']))
 def broadcast_message(client, message):
     if message.chat.type == 'private':
-        bot.reply_text(message, "This command can only be used in a group or channel.")
+       await bot.reply_text(message, "This command can only be used in a group or channel.")
         return
 
     # Get the message to broadcast
@@ -28,4 +23,4 @@ def broadcast_message(client, message):
         except Exception as e:
             print(e)
 
-    bot.reply_text(message, "Broadcast sent successfully!")
+   await bot.reply_text(message, "Broadcast sent successfully!")

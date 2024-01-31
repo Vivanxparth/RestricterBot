@@ -56,11 +56,6 @@ async def delete_video_messages(client, message):
     await client.delete_messages(message.chat.id, message.id)
 
 
-# Delete messages with sticker
-@app.on_message(filters.sticker)
-async def delete_sticker_messages(client, message):
-    await client.delete_messages(message.chat.id, message.id)
-
 
 # Delete channel messages
 @app.on_message(filters.channel)

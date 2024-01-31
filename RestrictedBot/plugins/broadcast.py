@@ -1,7 +1,6 @@
 import asyncio
 from pyrogram import Client, filters
-
-
+from RestrictedBot import app
 
 # Define the broadcast command
 @app.on_message(filters.command("broadcast") & filters.group)

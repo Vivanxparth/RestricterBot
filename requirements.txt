@@ -1,4 +1,6 @@
 pyrogram
 tgcrypto
 torch
+requests
+pillow
 torchvision

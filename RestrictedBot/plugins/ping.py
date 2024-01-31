@@ -1,6 +1,6 @@
 from RestrictedBot import app
 from pyrogram.types import Message
-from pyrogram import *
+from pyrogram import Client, filters
 
 @app.on_message(
     filters.command("ping")

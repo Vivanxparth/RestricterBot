@@ -1,4 +1,6 @@
-from pyrogram import *
+import asyncio
+from pyrogram.errors.exceptions.flood_420 import FloodWait
+from pyrogram import Client, filters
 from pyrogram.types import *
 from RestrictedBot import app
 

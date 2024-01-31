@@ -1,24 +1,23 @@
 from pyrogram import Client, filters
-import os
-from youtube_dl import YoutubeDL
+from pytgcalls import PyTgCalls
 from RestrictedBot import app
 
+pytgcalls = PyTgCalls(app)
 
-ydl_opts = {
-    'format': 'bestaudio/best',
-    'outtmpl': '%(title)s.%(ext)s',
-    'quiet': True,
-}
+# Handle the play command
+@app.on_message(filters.command("play") & filters.private)
+async def play(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    # Check if the user is in a voice chat
+    if "voice" in message.chat.type:
+        # Stream a file to the group voice chat
+        path_to_audio_file = "path_to_audio_file.mp3"  # Replace with the actual path to your audio file
+        await pytgcalls.join_group_call(
+            chat_id,
+            path_to_audio_file,
+            enable_logs=True
+        )
+    else:
+        await message.reply_text("You must join a voice chat to play music.")
 
-# Define the download command
-@app.on_message(filters.command("download") & filters.private)
-async def download_song(client, message):
-    # Get the query from the command
-    query = message.text.split(None, 1)[1]
-
-    # Download the song
-    with YoutubeDL(ydl_opts) as ydl:
-        info_dict = ydl.extract_info(query, download=True)
-        song_file = f"{info_dict['title']}.mp3"
-        await message.reply_document(open(song_file, "rb"))
-        os.remove(song_file)

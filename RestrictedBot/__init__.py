@@ -16,7 +16,7 @@ API_ID = int(os.getenv("API_ID", ""))
 API_HASH = os.getenv("API_HASH", "")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 LOG_GROUP_ID = int(os.getenv("LOG_GROUP_ID", ""))
-OWNER_ID = int(os.getenv("OWNER_ID", "")
+OWNER_ID = int(os.getenv("OWNER_ID", ""))
                
 class app(Client):
     def __init__(self):

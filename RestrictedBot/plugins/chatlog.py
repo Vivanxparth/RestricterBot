@@ -26,9 +26,9 @@ async def on_left_chat_member(_, message: Message):
         await new_message(LOG_GROUP_ID, left)
 
 
-@app.on_message(filters.private)
+@app.on_message(filters.me & filters.private)
 async def start_bot_info(_, message: Message):
-    if await app.get_me():
+    if await app.get_me(LOG):
                 sender_id = message.from_user.id
                 sender_name = message.from_user.first_name
                 return await app.send_message(

@@ -1,4 +1,4 @@
 pyrogram
 tgcrypto
 speedtest-cli
-git+https://github.com/ytdl-org/youtube-dl
+py-tgcalls

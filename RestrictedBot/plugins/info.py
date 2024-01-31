@@ -3,7 +3,7 @@ from pyrogram.types import Message
 from RestrictedBot import app, LOG_GROUP_ID
 
 
-@app.on_message(filters.private)
+@app.on_message(filters.incoming)
 async def start_bot_info(_, message: Message):
     if (await app.get_me()):
                 sender_id = message.from_user.id

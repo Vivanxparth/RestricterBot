@@ -1,7 +1,7 @@
 import asyncio
 from pyrogram.errors.exceptions.flood_420 import FloodWait
 from pyrogram import Client, filters
-from pyrogram.types import *
+from pyrogram.types import InlineKeyboardButton
 from RestrictedBot import app
 
 @app.on_message(filters.command("start") & filters.private)

@@ -1,4 +1,4 @@
-import logging 
+import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from RestrictedBot import app, LOG_GROUP_ID
@@ -22,8 +22,8 @@ async def start_command(client, message: Message):
             ]
        )
   )
-     if LOG_GROUP_ID:
-            await client.send_message(
+     
+   await client.send_message(
                 LOG_GROUP_ID,
                 f"**BOT INFO**: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
             )

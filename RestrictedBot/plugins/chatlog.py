@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from RestrictedBot import app
-from init import LOG_GROUP_ID
+from RestrictedBot import LOG_GROUP_ID
 
 async def new_message(chat_id: int, message: str):
     await app.send_message(chat_id=chat_id, text=message)

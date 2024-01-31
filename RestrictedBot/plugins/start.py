@@ -2,7 +2,12 @@ from pyrogram import *
 from pyrogram.types import *
 from RestrictedBot import app
 
-@app.on_message(filters.command("start") & filters.private)
+
+
+@app.on_message(
+    filters.command("start")
+    & filters.private
+)
 async def start_command(client, message: Message):
   await message.reply_photo(
                         photo=f"https://telegra.ph/file/e41caec77a264f14e43d0.jpg",

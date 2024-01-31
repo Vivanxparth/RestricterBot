@@ -1,9 +1,8 @@
-import asyncio
+import logging 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from RestrictedBot import app
 
-loop = asyncio.get_running_loop()
 
 @app.on_message(
     filters.command("start", prefixes="/")
@@ -23,3 +22,10 @@ async def start_command(client, message: Message):
             ]
        )
   )
+   if LOG_CHANNEL:
+            await client.send_message(
+                LOG_CHANNEL,
+                f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+            )
+        else:
+            logging.info(f"#NewUser :- Name : {message.from_user.first_name} ID : {message.from_user.id}")

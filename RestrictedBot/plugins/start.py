@@ -20,5 +20,5 @@ async def start_command(client, message: Message):
                         "✚ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ", url=f"https://t.me/Handlerprobot?startgroup=true")
                 ]          
             ]
-       )
+       ),
   )

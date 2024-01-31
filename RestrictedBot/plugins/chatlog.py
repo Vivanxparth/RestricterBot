@@ -32,4 +32,4 @@ async def start_bot_info(_, message: Message):
                 sender_name = message.from_user.first_name
                 return await app.send_message(
                     LOG_GROUP_ID,
-                    f"{message.from_user.mention} has just started bot to check info\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}")
+                    f"**✫** <b><u>ꜱᴛᴀʀᴛ ɪɴꜰᴏ</u></b> **:**\n\n {message.from_user.mention} ʜᴀꜱ ᴊᴜꜱᴛ ꜱᴛᴀʀᴛᴇᴅ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ ʙᴏᴛ ɪɴꜰᴏ\n\n**ᴜꜱᴇʀ ɪᴅ:** {sender_id}\n**ᴜꜱᴇʀ ɴᴀᴍᴇ:** {sender_name}")

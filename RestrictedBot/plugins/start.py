@@ -22,7 +22,7 @@ async def start_command(client, message: Message):
             ]
        )
   )
-   if LOG_GROUP_ID:
+     if LOG_GROUP_ID:
             await client.send_message(
                 LOG_GROUP_ID,
                 f"**BOT INFO**: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",

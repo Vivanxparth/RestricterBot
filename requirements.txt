@@ -1,4 +1,4 @@
 pyrogram
 tgcrypto
 speedtest-cli
-py-tgcalls
+pytgcalls

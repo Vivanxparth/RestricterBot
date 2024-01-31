@@ -5,7 +5,6 @@ from RestrictedBot import app as bot
 def broadcast_message(client, message):
     if message.chat.type == 'private':
        await bot.reply_text(message, "This command can only be used in a group or channel.")
-        return
 
     # Get the message to broadcast
     broadcast_text = message.text[11:]  # Remove '/broadcast ' from the command

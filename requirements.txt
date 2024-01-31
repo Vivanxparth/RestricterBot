@@ -1,5 +1,4 @@
 pyrogram
 tgcrypto
 speedtest-cli
-youtube_dl
-yt-dlp
+git+https://github.com/ytdl-org/youtube-dl

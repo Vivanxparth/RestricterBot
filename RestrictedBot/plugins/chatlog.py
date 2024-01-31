@@ -24,12 +24,3 @@ async def on_left_chat_member(_, message: Message):
         chat_id = message.chat.id
         left = f"**✫** <b><u>ʟᴇғᴛ ɢʀᴏᴜᴘ</u></b> **:**\n\n**ᴄʜᴀᴛ ɪᴅ :** {chat_id}\n**ᴄʜᴀᴛ ᴛɪᴛʟᴇ :** {title}\n\n**ʀᴇᴍᴏᴠᴇᴅ ʙʏ :** {remove_by}"
         await new_message(LOG_GROUP_ID, left)
-
-@app.on_message(filters.private)
-async def start_bot_info(_, message: Message):
-    if (await app.get_me()):
-                sender_id = message.from_user.id
-                sender_name = message.from_user.first_name
-                return await app.send_message(
-                    LOG_GROUP_ID,
-                    f"**✫** <b><u>ꜱᴛᴀʀᴛ ɪɴꜰᴏ</u></b> **:**\n\n {message.from_user.mention} ʜᴀꜱ ᴊᴜꜱᴛ ꜱᴛᴀʀᴛᴇᴅ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ ʙᴏᴛ ɪɴꜰᴏ\n\n**ᴜꜱᴇʀ ɪᴅ:** {sender_id}\n**ᴜꜱᴇʀ ɴᴀᴍᴇ:** {sender_name}")

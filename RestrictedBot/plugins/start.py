@@ -3,10 +3,9 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from RestrictedBot import app
 
-loop = asyncio.get_running_loop()
 
 @app.on_message(
-    filters.command("start")
+    filters.command("start", prefixes="/")
     & filters.private
 )
 async def start_command(client, message: Message, _):

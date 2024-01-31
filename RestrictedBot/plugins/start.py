@@ -1,7 +1,6 @@
 from pyrogram import *
 from pyrogram.types import Message
 from RestrictedBot import app
-from pyrogram import Client, filters
 
 @app.on_message(filters.command("start"))
 async def hello(app, message):

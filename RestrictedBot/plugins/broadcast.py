@@ -14,13 +14,13 @@ async def broadcast(client, message):
             if message.reply_to_message and message.reply_to_message.media:
                 # Broadcast message with media
                 media = message.reply_to_message
-                async for dialog in app.iter_dialogs():
+                async for dialog in app.iter.dialogs():
                     if dialog.chat.type in ("group", "supergroup", "channel"):
                         await app.send_media(dialog.chat.id, media=media, caption=text)
                 await message.reply_text("Broadcast completed successfully!")
             else:
                 # Broadcast message without media
-                async for dialog in app.iter_dialogs():
+                async for dialog in app.iter.dialogs():
                     if dialog.chat.type in ("group", "supergroup", "channel"):
                         await app.send_message(dialog.chat.id, text)
                 await message.reply_text("Broadcast completed successfully!")

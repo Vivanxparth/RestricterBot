@@ -1,7 +1,9 @@
+import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from RestrictedBot import app, LOG_GROUP_ID
 
+loop = asyncio.get_running_loop()
 
 async def new_message(chat_id: int, message: str):
     await app.send_message(chat_id=chat_id, text=message)
@@ -28,7 +30,7 @@ async def on_left_chat_member(_, message: Message):
 
 @app.on_message(filters.me & filters.private)
 async def start_bot_info(_, message: Message):
-    if await app.get_me(LOG):
+    if await app.get_me():
                 sender_id = message.from_user.id
                 sender_name = message.from_user.first_name
                 return await app.send_message(

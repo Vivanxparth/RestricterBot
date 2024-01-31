@@ -1,7 +1,7 @@
 import logging 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from RestrictedBot import app
+from RestrictedBot import app, LOG_GROUP_ID
 
 
 @app.on_message(
@@ -22,10 +22,10 @@ async def start_command(client, message: Message):
             ]
        )
   )
-   if LOG_CHANNEL:
+   if LOG_GROUP_ID:
             await client.send_message(
-                LOG_CHANNEL,
-                f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+                LOG_GROUP_ID,
+                f"**BOT INFO**: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
             )
         else:
-            logging.info(f"#NewUser :- Name : {message.from_user.first_name} ID : {message.from_user.id}")
+            logging.info(f"**BOT INFO** :- Name : {message.from_user.first_name} ID : {message.from_user.id}")

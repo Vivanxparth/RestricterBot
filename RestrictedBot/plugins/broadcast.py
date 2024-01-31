@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from RestrictedBot import app as bot
 
 @bot.on_message(filters.command(['broadcast']))
-def broadcast_message(client, message):
+async def broadcast_message(client, message):
     if message.chat.type == 'private':
        await bot.reply_text(message, "This command can only be used in a group or channel.")
 

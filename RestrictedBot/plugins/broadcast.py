@@ -20,3 +20,10 @@ async def broadcast_message(client, message):
     else:
         # If the sender is not authorized, inform them
         await message.reply_text("You are not authorized to use this command.")
+
+
+# Generate the private chat link
+private_chat_link = f"https://t.me/handlerprobot?start=private"
+
+print("Here's the private chat link:")
+print(private_chat_link)

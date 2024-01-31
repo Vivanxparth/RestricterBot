@@ -22,4 +22,4 @@ def broadcast_message(client, message):
         except Exception as e:
             print(e)
 
-   await bot.reply_text(message, "Broadcast sent successfully!")
+        await bot.reply_text(message, "Broadcast sent successfully!")

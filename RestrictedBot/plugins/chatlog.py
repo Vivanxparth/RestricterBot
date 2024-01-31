@@ -24,3 +24,10 @@ async def on_left_chat_member(_, message: Message):
         chat_id = message.chat.id
         left = f"**✫** <b><u>ʟᴇғᴛ ɢʀᴏᴜᴘ</u></b> **:**\n\n**ᴄʜᴀᴛ ɪᴅ :** {chat_id}\n**ᴄʜᴀᴛ ᴛɪᴛʟᴇ :** {title}\n\n**ʀᴇᴍᴏᴠᴇᴅ ʙʏ :** {remove_by}"
         await new_message(LOG_GROUP_ID, left)
+  
+    if await is_on_off(LOG):
+                sender_id = message.from_user.id
+                sender_name = message.from_user.first_name
+                return await app.send_message(
+                    LOG_GROUP_ID,
+                    f"{message.from_user.mention} has just started bot to check \n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}")

@@ -5,7 +5,7 @@ from RestrictedBot import app, LOG_GROUP_ID
 
 @app.on_message(filters.private)
 async def start_bot_info(_, message: Message):
-    if (await app.get_me()):
+    if await is_on_off(LOG):
                 sender_id = message.from_user.id
                 sender_name = message.from_user.first_name
                 return await app.send_message(

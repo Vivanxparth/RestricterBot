@@ -1,5 +1,5 @@
 from pyrogram import *
-from pyrogram.types import Message
+from pyrogram.types import *
 from RestrictedBot import app
 
 @app.on_message(filters.command("start"))

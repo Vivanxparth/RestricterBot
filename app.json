@@ -14,6 +14,10 @@
         "API_HASH": {
             "description": "App Hash from my.telegram.org/apps",
             "required": true
+        },
+        "LOG_GROUP_ID": {
+            "description": "Your log group id not channel id",
+            "required": true
         }
     },
     "buildpacks": [

@@ -5,7 +5,8 @@ from RestrictedBot import app
 
 
 @app.on_message(
-    filters.command("start")
+    filters.command("start") 
+    & filters.incoming
 )
 async def start_command(client, message: Message):
   await message.reply_photo(

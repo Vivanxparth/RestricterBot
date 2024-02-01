@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 import telegraph
+from RestrictedBot import app
 
 # Initialize the Telegraph client
 telegraph_client = telegraph.Telegraph()

@@ -1,6 +1,7 @@
 from RestrictedBot import app
 from pyrogram.types import Message
 from pyrogram import Client, filters
+from datetime import datetime
 
 @app.on_message(
     filters.command("ping")

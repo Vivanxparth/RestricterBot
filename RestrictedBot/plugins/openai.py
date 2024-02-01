@@ -1,24 +1,24 @@
-from pyrogram import Client, filters
-import openai
+import requests
 from RestrictedBot import app
+from config import BOT_USERNAME
+import time
+from pyrogram.enums import ChatAction, ParseMode
+from pyrogram import filters, Client
 
-
-# Configure the OpenAI API with your API key
-openai.api_key = "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"
-
-# Define a handler for incoming messages
-@app.on_message(filters.command("ask") & filters.group & ~filters.me)
-async def chat_gpt(client, message):
-    await message.reply_text(f"**Usage: /ask**")
-    # Get the user's message
-    user_message = message.text
-
-    # Use OpenAI's GPT-3 API to generate a response
-    response = openai.Completion.create(
-      engine="davinci", 
-      prompt=user_message, 
-      max_tokens=100
-    )
-
-    # Send the response back to the user
-    message.reply_text(response["choices"][0]["text"])
+@app.on_message(filters.command(["ask","gpt"],  prefixes=["+", ".", "/", "-", "", "$","#","&"]))
+async def chat(client, message):
+    try:
+        start_time = time.time()
+        await bot.send_chat_action(message.chat.id, ChatAction.TYPING)
+        if len(message.command) < 2:
+            await message.reply_text(
+            "Example:**\n\n/ask Who are you?")
+        else:
+            a = message.text.split(' ', 1)[1]
+            response = requests.get(f'https://mukesh-api.vercel.app/chatgpt/{a}') 
+            x=response.json()["results"]
+            end_time = time.time()
+            telegram_ping = str(round((end_time - start_time) * 1000, 3)) + " ᴍs"
+            await message.reply_text(f" {x}\n\n✨ᴛɪᴍᴇ ᴛᴀᴋᴇɴ  {telegram_ping} \n\n 💓 ᴘᴏᴡᴇʀᴇᴅ ʙʏ @{BOT_USERNAME} ", parse_mode=ParseMode.MARKDOWN)     
+    except Exception as e:
+        await message.reply_text(f"**ᴇʀʀᴏʀ: {e} ")

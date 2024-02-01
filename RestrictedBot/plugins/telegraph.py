@@ -1,19 +1,22 @@
 from pyrogram import Client, filters
 import telegraph
-from RestrictedBot import app
+
 
 # Initialize the Telegraph client
 telegraph_client = telegraph.Telegraph()
 
-# handler for the /tl command
+# Define a handler for the /tl command
 @app.on_message(filters.command("tl"))
-def new_page_command(client, message):
+async def make_link_command(client, message):
+    # Extract the content from the user's message
+    content = message.text.split("/tl", 1)[1].strip()
+
     # Create a new page on Telegraph
     response = telegraph_client.create_page(
-        title="Sample Page",
-        content=["<p>Hello, this is a sample page created by the bot!</p>"]
+        title="Telegram Bot Generated Page",
+        content=[content]
     )
-    telegraph_url = "https://graph.org/{}".format(response["path"])
+    telegraph_url = "https://telegra.ph/{}".format(response["path"])
 
     # Send the Telegraph URL as a reply
-    message.reply_text(telegraph_url)
+    await message.reply_text(f"Here is your Telegraph link: {telegraph_url}")

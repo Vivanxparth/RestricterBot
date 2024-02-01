@@ -1,16 +1,16 @@
 from pyrogram import Client, filters
 import telegraph
 from RestrictedBot import app
-
+from pyrogram.types import Message
 
 # Initialize the Telegraph client
 telegraph_client = telegraph.Telegraph()
 
 # Define a handler for the /tl command
 @app.on_message(filters.command("tl") & filters.group)
-async def make_link_command(client, message):
+async def make_link_command(client, message: Message):
     # Extract the content from the user's message
-    content = message.text.split("/tl", 1)[1].strip()
+    content = message.text.split("tl", 1)[1].strip()
 
     # Create a new page on Telegraph
     response = telegraph_client.create_page(

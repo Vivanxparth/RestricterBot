@@ -4,7 +4,7 @@ from RestrictedBot import app
 from pyrogram.types import InputMediaPhoto
 
 
-@app.on_message(filters.command("tl"))
+@app.on_message(filters.command("tl") & filters.incoming & filters.group)
 def telegraph(client, message):
     reply = message.reply_to_message
     if reply.media:
@@ -14,4 +14,4 @@ def telegraph(client, message):
         for x in fk:
             url = "https://graph.org" + x
             
-        i.edit(f'``{url}``')
+        i.edit(f'`{url}`')

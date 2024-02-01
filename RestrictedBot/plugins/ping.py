@@ -12,5 +12,5 @@ async def ping_command(client, message: Message):
     )
     start = datetime.now()
     resp = (datetime.now() - start).microseconds / 1000
-    await response.edit_text(f"˜”*°•.˜”*°• ριηg\n\n˜”*°•.˜”*°• ρσηg", resp
+    await response.edit_text(f"˜”*°•.˜”*°• ριηg\n\n˜”*°•.˜”*°• ρσηg", {resp}
     )

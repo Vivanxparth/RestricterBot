@@ -1,23 +1,17 @@
-from pyrogram import Client, filters
-import telegraph
+from telegraph import upload_file
+from pyrogram import filters
 from RestrictedBot import app
-from pyrogram.types import Message
+from pyrogram.types import InputMediaPhoto
 
-# Initialize the Telegraph client
-telegraph_client = telegraph.Telegraph()
 
-# Define a handler for the /tl command
-@app.on_message(filters.command("tl") & filters.group)
-async def make_link_command(client, message: Message):
-    # Extract the content from the user's message
-    content = message.text.split("tl", 1)[1].strip()
-
-    # Create a new page on Telegraph
-    response = telegraph_client.create_page(
-        title="Telegram Bot Generated Page",
-        content=[content]
-    )
-    telegraph_url = "https://telegra.ph/{}".format(response["path"])
-
-    # Send the Telegraph URL as a reply
-    await message.reply_text(f"Here is your Telegraph link: {telegraph_url}")
+@app.on_message(filters.command("tl"))
+async def telegraph(client, message):
+    reply = message.reply_to_message
+    if reply.media:
+        i = message.reply("Please Wait!")
+        path = reply.download()
+        fk = upload_file(path)
+        for x in fk:
+            url = "https://graph.org" + x
+            
+        i.edit(f'``{url}``')

@@ -9,8 +9,6 @@ from RestrictedBot import app
 def upscale_command(client, message):
     # Get the photo file ID from the message
     photo = message.photo[-1]
-
-    if photo:
         # Download the photo
         file_path = client.download_media(photo, file_name="photo.jpg")
 

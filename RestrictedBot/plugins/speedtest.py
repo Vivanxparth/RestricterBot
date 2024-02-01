@@ -9,7 +9,7 @@ st = speedtest.Speedtest()
 
 # Define a handler for the /speedtest command
 @app.on_message(filters.command("speedtest"))
-async def speedtest_command(client, message):
+def speedtest_command(client, message):
     # Perform the speed test
     st.get_best_server()
     download_speed = st.download()
@@ -26,7 +26,7 @@ async def speedtest_command(client, message):
     # Send the speed test results as a photo
     caption = f"Download speed: {download_speed / 1_000_000:.2f} Mbps\nUpload speed: {upload_speed / 1_000_000:.2f} Mbps"
     with open("speed_test_results.png", "rb") as speed_test_img:
-        app.send_photo(
+        client.send_photo(
             chat_id=message.chat.id,
             photo=speed_test_img,
             caption=caption

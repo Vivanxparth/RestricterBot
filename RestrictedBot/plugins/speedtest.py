@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 import speedtest
 import matplotlib.pyplot as plt
 from io import BytesIO
+from RestrictedBot import app
 
 # Initialize the Speedtest client
 st = speedtest.Speedtest()

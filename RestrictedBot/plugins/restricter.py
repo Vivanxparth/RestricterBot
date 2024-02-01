@@ -38,7 +38,7 @@ bio_link_pattern = re.compile(r'(http|https)://[^\s]+')
 
 
 # Delete messages with bio links
-@app.on_message(filters.link & filters.group)
+@app.on_message(filters.caption & filters.group)
 async def delete_bio_link_messages(client, message):
     if bio_link_pattern.search(message.text):
         await client.delete_messages(message.chat.id, message.id)
@@ -99,7 +99,7 @@ async def delete_video_messages(client, message):
 link_pattern = re.compile(r'(http[s]?:\/\/)?[^\s(["<,>.]+?\.[^\s[">,<.]+')
 
 # Delete messages with links
-@app.on_message(filters.link & filters.group)
+@app.on_message(filters.caption & filters.group)
 async def delete_link_messages(client, message):
     if link_pattern.search(message.text):
         await client.delete_messages(message.chat.id, message.id)

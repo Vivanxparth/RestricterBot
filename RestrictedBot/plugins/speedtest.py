@@ -5,7 +5,7 @@ from RestrictedBot import app
 
 
 
-def testspeed(m):
+async def testspeed(m):
     try:
         test = speedtest.Speedtest()
         test.get_best_server()

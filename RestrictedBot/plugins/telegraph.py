@@ -5,7 +5,7 @@ from pyrogram.types import InputMediaPhoto
 
 
 @app.on_message(filters.command("tl") & filters.incoming)
-async def telegraph(client, message):
+def telegraph(client, message):
     reply = message.reply_to_message
     if reply.media:
         i = message.reply("Please Wait!")

@@ -4,11 +4,6 @@ from pyrogram import filters
 from RestrictedBot import app
 
 
-
-async def testspeed(m):
-
-
-
 @app.on_message(filters.command("speedtest"))
 async def speedtest_function(client, message):
     m = await message.reply_text("Running Speed test")

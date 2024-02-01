@@ -5,7 +5,7 @@ from RestrictedBot import app, OWNER_ID
 speedtester = speedtest.Speedtest()
 
 # Define the speedtest command
-@app.on_message(filters.command("speedtest") & filters.group & filters.private)
+@app.on_message(filters.command("speedtest") & filters.group)
 async def run_speedtest(client, message):
     # Check if the user is the bot owner
     if message.from_user.id == OWNER_ID:

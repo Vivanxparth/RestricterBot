@@ -8,7 +8,7 @@ from pyrogram import filters, Client
 async def chat(client, message):
     try:
         start_time = time.time()
-        await bot.send_chat_action(message.chat.id, ChatAction.TYPING)
+        await app.send_chat_action(message.chat.id, ChatAction.TYPING)
         if len(message.command) < 2:
             await message.reply_text(
             "Example:**\n\n/ask Who are you?")

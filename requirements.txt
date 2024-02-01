@@ -4,3 +4,4 @@ requests
 speedtest-cli
 telegraph
 openai==0.28.0
+matplotlib

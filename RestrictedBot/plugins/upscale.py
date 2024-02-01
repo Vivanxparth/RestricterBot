@@ -6,7 +6,7 @@ from RestrictedBot import app
 
 # Define a handler for the /upscale command
 @app.on_message(filters.command("upscale"))
-def upscale_command(client, message):
+async def upscale_command(client, message):
     # Get the photo file ID from the message
     photo = message.photo[-1] if message.photo
 

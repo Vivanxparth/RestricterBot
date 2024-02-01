@@ -3,7 +3,7 @@ import requests
 from RestrictedBot import app
 
 # Define the quote command
-@app.on_message(filters.command("quote") & filters.private)
+@app.on_message(filters.command("quote") & filters.group)
 async def send_quote(client, message):
     response = requests.get("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en")
     if response.status_code == 200:

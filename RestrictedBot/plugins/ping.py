@@ -6,7 +6,7 @@ from pyrogram import Client, filters
     filters.command("ping")
     & filters.group
 )  
-async def ping_command(client, message: Message, _):
+async def ping_command(client, message: Message):
     response = await message.reply_text(f"Pinging 🏓",
     )
     start = datetime.now()

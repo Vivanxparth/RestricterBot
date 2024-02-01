@@ -8,7 +8,7 @@ speedtester = speedtest.Speedtest()
 @app.on_message(filters.command("speedtest") & filters.group & filters.private)
 async def run_speedtest(client, message):
     # Check if the user is the bot owner
-    if message.from_user.id == OWNER_ID:
+     if message.from_user.id == OWNER_ID:
     speedtester.get_best_server()
     download_speed = speedtester.download()
     upload_speed = speedtester.upload()

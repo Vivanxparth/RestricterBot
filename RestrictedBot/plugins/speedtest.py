@@ -1,7 +1,7 @@
 import asyncio
 import speedtest
 from pyrogram import filters
-from RestrictedBot import app, OWNER_ID
+from RestrictedBot import app
 
 
 
@@ -21,7 +21,7 @@ def testspeed(m):
     return result
 
 
-@app.on_message(filters.command("speedtest") & OWNER_ID)
+@app.on_message(filters.command("speedtest"))
 async def speedtest_function(client, message):
     m = await message.reply_text("Running Speed test")
     loop = asyncio.get_event_loop()

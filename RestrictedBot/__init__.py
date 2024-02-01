@@ -4,7 +4,7 @@ import os
 from os import getenv
 import logging
 from pyrogram import Client
-from RestrictedBot.plugins import git
+
 
 logging.basicConfig(
     format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",

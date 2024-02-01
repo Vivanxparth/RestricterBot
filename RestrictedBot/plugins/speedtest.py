@@ -9,7 +9,7 @@ st = speedtest.Speedtest()
 
 # Define a handler for the /speedtest command
 @app.on_message(filters.command("speedtest"))
-def speedtest_command(client, message):
+async def speedtest_command(client, message):
     # Perform the speed test
     st.get_best_server()
     download_speed = st.download()

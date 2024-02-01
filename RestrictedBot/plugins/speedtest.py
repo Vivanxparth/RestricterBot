@@ -1,12 +1,13 @@
 import speedtest
 from pyrogram import Client, filters
 from RestrictedBot import app, OWNER_ID
+from pyrogram.types import Message
 
 speedtester = speedtest.Speedtest()
 
 # Define the speedtest command
 @app.on_message(filters.command("speedtest") & filters.group)
-async def run_speedtest(client, message):
+async def run_speedtest(client, message: Message):
     # Check if the user is the bot owner
     if message.from_user.id == OWNER_ID:
       command, *text = message.text.split(maxsplit=1)

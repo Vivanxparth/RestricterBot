@@ -6,7 +6,7 @@ from pyrogram.types import Message
 speedtester = speedtest.Speedtest()
 
 # Define the speedtest command
-@app.on_message(filters.command("speedtest") & filters.group)
+@app.on_message(filters.command("speedtest"))
 async def run_speedtest(client, message: Message):
     # Check if the user is the bot owner
     if message.from_user.id == OWNER_ID:

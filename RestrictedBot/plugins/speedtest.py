@@ -1,15 +1,14 @@
 import speedtest
 from pyrogram import Client, filters
-from RestrictedBot import app
-
-
-
+from RestrictedBot import app, OWNER_ID
 
 speedtester = speedtest.Speedtest()
 
 # Define the speedtest command
-@app.on_message(filters.command("speedtest"))
+@app.on_message(filters.command("speedtest") & filters.group & filters.private)
 async def run_speedtest(client, message):
+    # Check if the user is the bot owner
+    if message.from_user.id == OWNER_ID:
     speedtester.get_best_server()
     download_speed = speedtester.download()
     upload_speed = speedtester.upload()

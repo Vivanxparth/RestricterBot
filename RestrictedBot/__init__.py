@@ -70,7 +70,7 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
 
 def git():
         UPSTREAM_REPO = UPSTREAM_REPO
-    try:
+     try:
         repo = Repo()
         LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
     except GitCommandError:

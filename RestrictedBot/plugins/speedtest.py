@@ -1,29 +1,32 @@
-import asyncio
+from pyrogram import Client, filters
 import speedtest
-from pyrogram import filters
-from RestrictedBot import app
+import matplotlib.pyplot as plt
+from io import BytesIO
 
+# Initialize the Speedtest client
+st = speedtest.Speedtest()
 
+# Define a handler for the /speedtest command
 @app.on_message(filters.command("speedtest"))
-async def speedtest_function(client, message):
-    m = await message.reply_text("Running Speed test")
-    loop = asyncio.get_event_loop()
-    result = await loop.run_in_executor(None)
-    output = f"""**Speedtest Results**
-    
-<u>**Client:**</u>
-**__ISP:__** {result['client']['isp']}
-**__Country:__** {result['client']['country']}
-  
-<u>**Server:**</u>
-**__Name:__** {result['server']['name']}
-**__Country:__** {result['server']['country']}, {result['server']['cc']}
-**__Sponsor:__** {result['server']['sponsor']}
-**__Latency:__** {result['server']['latency']}  
-**__Ping:__** {result['ping']}"""
-    msg = await app.send_photo(
-        chat_id=message.chat.id, 
-        photo=result["share"], 
-        caption=output
-    )
-    await m.delete()
+def speedtest_command(client, message):
+    # Perform the speed test
+    st.get_best_server()
+    download_speed = st.download()
+    upload_speed = st.upload()
+
+    # Create a visual representation of the speed test results
+    plt.bar(["Download", "Upload"], [download_speed / 1_000_000, upload_speed / 1_000_000])
+    plt.title("Speed Test Results")
+    plt.ylabel("Speed (Mbps)")
+    plt.ylim(0, max(download_speed, upload_speed) / 1_000_000 + 10)
+    plt.savefig("speed_test_results.png")
+    plt.close()
+
+    # Send the speed test results as a photo
+    caption = f"Download speed: {download_speed / 1_000_000:.2f} Mbps\nUpload speed: {upload_speed / 1_000_000:.2f} Mbps"
+    with open("speed_test_results.png", "rb") as speed_test_img:
+        client.send_photo(
+            chat_id=message.chat.id,
+            photo=speed_test_img,
+            caption=caption
+        )

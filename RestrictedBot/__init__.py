@@ -1,3 +1,4 @@
+import subprocess
 import asyncio
 import os
 from os import getenv
@@ -42,5 +43,20 @@ class app(Client):
         await super().stop()
 
 
+def update_bot_repo():
+    # Change to the directory where your bot code is located
+    repo_directory = "RestricterBot"
+    command = f"cd {repo_directory} && git add . && git commit -m 'Updated bot code' && git push origin master"
+
+    # Run the command
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        print(f"Error: {stderr.decode('utf-8')}")
+    else:
+        print(f"Bot code successfully updated: {stdout.decode('utf-8')}")
+
+update_bot_repo()
 
 app = app()

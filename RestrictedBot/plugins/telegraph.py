@@ -6,7 +6,7 @@ import telegraph
 telegraph_client = telegraph.Telegraph()
 
 # Define a handler for the /tl command
-@app.on_message(filters.command("tl"))
+@app.on_message(filters.command("tl") & filters.group)
 async def make_link_command(client, message):
     # Extract the content from the user's message
     content = message.text.split("/tl", 1)[1].strip()

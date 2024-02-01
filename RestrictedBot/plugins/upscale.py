@@ -8,7 +8,7 @@ from RestrictedBot import app
 @app.on_message(filters.command("upscale"))
 def upscale_command(client, message):
     # Get the photo file ID from the message
-    photo = message.photo[-1] if message.photo else (message.document if message.document.mime_type.startswith("image") else None)
+    photo = message.photo[-1] if message.photo
 
     if photo:
         # Download the photo

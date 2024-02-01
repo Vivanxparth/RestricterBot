@@ -27,7 +27,7 @@ async def speedtest_command(client, message):
     # Send the speed test results as a photo
     caption = f"Download speed: {download_speed / 1_000_000:.2f} Mbps\nUpload speed: {upload_speed / 1_000_000:.2f} Mbps"
     with open("speed_test_results.png", "rb") as speed_test_img:
-        client.send_photo(
+        app.send_photo(
             chat_id=message.chat.id,
             photo=speed_test_img,
             caption=caption

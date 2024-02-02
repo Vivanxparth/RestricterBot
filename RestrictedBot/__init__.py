@@ -19,8 +19,6 @@ API_HASH = os.getenv("API_HASH", "")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 LOG_GROUP_ID = int(os.getenv("LOG_GROUP_ID", ""))
 OWNER_ID = int(os.getenv("OWNER_ID", ""))
-UPSTREAM_REPO = os.getenv("UPSTREAM_REPO", "https://github.com/Vivanxparth/RestricterBot")
-UPSTREAM_BRANCH = os.getenv("UPSTREAM_BRANCH", "master")
                
 class app(Client):
     def __init__(self):
